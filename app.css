@@ -32,7 +32,7 @@
 }
 
 .nav {
- padding: .8rem;
+ padding: .5rem;
  background-color: var(--gray300);
  margin-bottom: 1.5rem;
  box-shadow: 0 0 5px var(--gray100);
@@ -42,7 +42,7 @@
      display: flex;
      justify-content: space-between;
      align-items: center;
-     gap: .2rem;
+     gap: .1rem;
 }
 
 .logo_mobile {
@@ -398,6 +398,14 @@
      transition: all .3s ease-in-out;
 }
 
+.notification_icons svg:hover {
+     border: 1px solid var(--gray50) !important;
+     padding: .2rem;
+     border-radius: 4px;
+     outline: none;
+     transition: all .3s ease-in-out;
+}
+
 /* main */
 
 .plan_selection {
@@ -429,6 +437,24 @@
      width: 20px;
      height: 20px;
      cursor: pointer;
+     transition: all .3s ease-in-out;
+}
+
+ .exit_icon_mobile:focus,
+ .exit_icon_desktop:focus {
+     transition: all .3s ease-in-out;
+     outline: 2px solid var(--focused);
+     background-color: var(--gray50);
+     padding: .1rem;
+     border-radius: 2px;
+}
+
+ .exit_icon_mobile:hover,
+ .exit_icon_desktop:hover {
+     transition: all .3s ease-in-out;
+     background-color: var(--gray50);
+     padding: .1rem;
+     border-radius: 2px;
 }
 
 .exit_icon_desktop {
@@ -449,12 +475,26 @@
      cursor: pointer;
 }
 
+.plan_btn:hover {
+     background-color: var(--hover);
+     color: var(--fontDark);
+     transition: all .3s ease-in-out;
+}
+
+.plan_btn:focus {
+     background-color: var(--plain);
+     color: var(--fontDark);
+     transition: all .3s ease-in-out;
+     outline: 2px solid var(--focused);
+}
+
 /* setup guide info */
 
 .setup_guide {
      background-color: var(--plain);
      padding: 16px 8px;
      border: 1px solid var(--strokes50);
+     margin-bottom: 4rem;
 }
 
 .setup_guide_div {
@@ -488,6 +528,20 @@
      cursor: pointer;
      transition: all.3s ease-in-out;
      transform: rotate(180deg);
+}
+
+.arrow_down:hover {
+     transition: all.3s ease-in-out;
+     border: 2px solid var(--gray50);
+     border-radius: 4px;
+     background-color: var(--hover);
+}
+
+.arrow_down:focus {
+     transition: all.3s ease-in-out;
+     outline: 2px solid var(--focused);
+     border-radius: 4px;
+     background-color: var(--fontLight);
 }
 
 .arrow_up {
@@ -632,12 +686,28 @@
      align-items: center;
      border-radius: 6px;
      background-color: #404040;
+     border: 1px solid var(--gray200);
      padding: 6px 12px;
      color: var(--fontLight);
-     box-shadow: 1.5px 1.5px var(--strokes100) inset, 1.5px 1.5px var(--strokes100);
+     box-shadow: 1.5px 1.5px gray inset, -1.5px 0px gray inset;
      outline: none;
      font-size: 12px;
      line-height: 130%;
+     cursor: pointer;
+     transition: all .3 ease-in-out;
+}
+
+.setup_info_btn:hover {
+     background-color: #2a2a2a;
+     color: var(--plain);
+     transition: all .3 ease-in-out;
+}
+
+.setup_info_btn:focus {
+     background-color: #404040;
+     color: var(--fontLight);
+     outline: 2px solid var(--focused);
+     transition: all .3 ease-in-out;
 }
 
 .import_product {
