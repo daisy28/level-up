@@ -130,6 +130,7 @@
      background-color: var(--plain);
      border: 2px solid var(--strokes50);
      padding: 1rem;
+     z-index: 5;
      display: none;
      transition: all 1s ease-in-out;
 }
@@ -234,6 +235,7 @@
      position: absolute;
      top: 60px;
      right: 4px;
+     z-index: 7;
      background-color: var(--plain);
      border: 2px solid var(--strokes50);
      padding-bottom: .7rem;
@@ -508,26 +510,17 @@
      color: var(--fontDark);
 }
 
-progress {
+.progress {
      width: 72px;
      height: 4px;
      border-radius: 28px;
      background-color: var(--fontLight);
-     -webkit-appearance: none;
-     appearance: none;
 }
 
-progress[value]::-webkit-progress-bar {
+.progress_fill {
      width: 0;
-     border-top-left-radius: 28px;
-     border-bottom-left-radius: 28px;
-     background-color: var(--gray300) !important;
-}
-
-progress[value]::-webkit-progress-value {
      height: 4px;
-     border-top-left-radius: 28px;
-     border-bottom-left-radius: 28px;
+     border-radius: 28px;
      background-color: var(--gray300) !important;
 }
 
@@ -560,10 +553,12 @@ progress[value]::-webkit-progress-value {
 
 .active_checker {
      display: none;
+     transition: all .5s ease-in-out;
 }
 
 .show_active_checker {
      display: block;
+     transition: all .5s ease-in-out;
      position: absolute;
      width: 24px;
      left: 0;

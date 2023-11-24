@@ -85,7 +85,7 @@ const setupUI = () => {
                          <img src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg" alt="check active" class="active_checker" />
                     </div>
                     <div class="setup_info">
-                         <h3>${info.heading}</h3>
+                         <h3 class="setup_information">${info.heading}</h3>
                          
                          <div class="setup_info_text">
                               <p>
@@ -114,21 +114,25 @@ const infos = document.querySelectorAll(".setup_info_text");
 const infoImages = document.querySelectorAll(".info_img");
 
 let isChecked = false;
+let progress = 0;
 
 infoContainer.forEach(element => {
      element.addEventListener("click", () => {
           infos.forEach(info => {
-               info.classList.remove("show_setup_info_text")
+               info.classList.remove("show_setup_info_text");
           });
+
           infoContainer.forEach(info => {
                info.classList.remove("info_container_active");
           });
+
           infoImages.forEach(img => {
                img.classList.remove("show_info_img");
           });
+
           if (element) {
                element.querySelector(".setup_info_text").classList.toggle("show_setup_info_text");
-
+               
                element.classList.add("info_container_active");
 
                element.querySelector(".info_img").classList.add("show_info_img");
@@ -137,28 +141,25 @@ infoContainer.forEach(element => {
 
      count = 0;
      const selectBtns = element.querySelectorAll(".setup_steps_heading");
-     const activeChecker = element.querySelectorAll(".active_checker");
 
      selectBtns.forEach(btn => {
           btn.addEventListener("click", () => {
                if (btn) {
-                    // isChecked = true;
-                    activeChecker.forEach(check => {
-                    check.classList.remove("show_active_checker");
-                    });
-
-                    progressDiv.querySelector("p").innerHTML = `${count >= setupInfos.length  ? count-- : count++} / ${setupInfos.length}`;
+                    
                     btn.querySelector(".active_checker").classList.toggle("show_active_checker");
-                    // isChecked = false
                }
+
+               if (btn.querySelector(".active_checker").classList.contains("show_active_checker")) {
+                    count++;
+                    progress += 20;
+               } else {
+                    count--;
+                    progress -= 20;
+               }
+               progressDiv.querySelector("p").innerHTML = `${count} / ${setupInfos.length} complete`;
                
-               
+               progressDiv.querySelector(".progress_fill").style.width = `${progress}%`;
           });
-     })
-     console.log()
+     });
 });
-
-
-
-// console.log(progressDiv)
 
