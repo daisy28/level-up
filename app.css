@@ -34,7 +34,7 @@
 .nav {
  padding: .8rem;
  background-color: var(--gray300);
- margin-bottom: 1rem;
+ margin-bottom: 1.5rem;
  box-shadow: 0 0 5px var(--gray100);
 }
 
@@ -378,6 +378,58 @@
      outline: none;
 }
 
+/* main */
+
+.plan_selection {
+     padding: 1rem;
+     background-color: var(--gray300);
+}
+
+.remove_trial {
+     display: none;
+}
+
+.plan_selection_details {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     gap: .2rem;
+}
+
+.plan_selection_details p {
+     font-size: 13px;
+     line-height: 140%;
+     color: var(--fontLight);
+     margin-bottom: 1.5rem;
+}
+
+ .exit_icon_mobile,
+ .exit_icon_desktop {
+     width: 20px;
+     height: 20px;
+     cursor: pointer;
+}
+
+.exit_icon_desktop {
+     display: none;
+}
+
+.plan_btn {
+     padding: 6px 12px;
+     border: 1px solid rgba(0, 0, 0, 0.1);
+     background-color: var(--plain);
+     border-radius: 6px;
+     width: 99px;
+     height: 28px;
+     color: #323232;
+     font-size: 12px;
+     font-weight: 500;
+     line-height: 130%;
+     cursor: pointer;
+}
+
+
+
 @media screen  and (max-width: 321px){
      .nav_input {
      width: 160px;
@@ -478,6 +530,40 @@
      .bell_div:hover,
      .user_profile:hover {
           background-color: var(--gray100);
+     }
+
+     main {
+          width: 800px;
+          margin: auto;
+     }
+
+     .plan_selection {
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+     }
+
+     .remove_trial {
+     display: none;
+}
+
+     .plan_selection p {
+          margin-bottom: 0;
+     }
+
+     .exit_icon_mobile {
+          display: none;
+     }
+
+     .exit_icon_desktop {
+          display: block;
+     }
+
+     .btn_group {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
      }
 
       
