@@ -1,31 +1,113 @@
 // Your javascript goes here
-
 const bellDiv = document.querySelector(".bell_div");
 const notification = document.querySelector(".notification_div");
 const menuPopup = document.querySelector(".menu_popup");
 const userProfile = document.querySelector(".user_profile");
 const userInitials = document.querySelector(".user_initials");
 const planSelection = document.querySelector(".plan_selection");
-const exitIcon = document.querySelector(".exit_icon");
+const exitIcon = document.querySelectorAll(".exit_btn");
 const exitIconDesktop = document.querySelector(".exit_icon_desktop");
 const toggleBtn = document.querySelector(".toggle_btn");
 const setupContainer = document.querySelector(".setup_step_container");
 const progressDiv = document.querySelector(".progress_div");
 const checkContainer = document.querySelector(".setup_steps_heading");
+let progress = 0;
 
 bellDiv.addEventListener("click", () => {
      notification.classList.toggle("show_notification");
      bellDiv.classList.toggle("notification_active");
+     const isExpanded = bellDiv.attributes["aria-expanded"].value === "true";
+     const allMenuItems = notification.querySelectorAll(`[role="menuitem"]`);
+
+     if (isExpanded) {
+          bellDiv.ariaExpanded = "false";
+          bellDiv.focus();
+     } else {
+          bellDiv.ariaExpanded = "true";
+          allMenuItems[0].focus();
+          notification.addEventListener("keyup", e => {
+               if (e.key === "Escape") {
+                    bellDiv.ariaExpanded = "false";
+                    bellDiv.focus();
+                    notification.classList.remove("show_notification");
+               }
+          });
+          allMenuItems.forEach((menuItem, index) => {
+               menuItem.addEventListener("keyup", e => {
+                    const firstMenuItem = index === 0;
+                    const lastMenuItem = index === allMenuItems.length - 1;
+                    const nextMenuItem = allMenuItems.item(index + 1);
+                    const previousMenuItem = allMenuItems.item(index - 1);
+                    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+                         if (lastMenuItem) {
+                              allMenuItems.item(0).focus();
+                              return
+                         }
+                         nextMenuItem.focus();
+                    }
+                    if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+                         if (firstMenuItem) {
+                              allMenuItems.item(allMenuItems.length - 1).focus();
+                              return
+                         }
+                         previousMenuItem.focus();
+                    }
+               });
+          });
+     }
 });
 
 userProfile.addEventListener("click", () => {
      menuPopup.classList.toggle("show_menu_popup");
      userInitials.classList.toggle("show_border");
      userProfile.classList.toggle("user_profile_active");
+       const isExpanded = userProfile.attributes["aria-expanded"].value === "true";
+     const allMenuItems = menuPopup.querySelectorAll(`[role="menuitem"]`);
+     console.log(allMenuItems)
+
+     if (isExpanded) {
+          userProfile.ariaExpanded = "false";
+          userProfile.focus();
+     } else {
+          userProfile.ariaExpanded = "true";
+          allMenuItems[0].focus();
+          menuPopup.addEventListener("keyup", e => {
+               if (e.key === "Escape") {
+                    console.log(e.key)
+                    userProfile.ariaExpanded = "false";
+                    userProfile.focus();
+                    menuPopup.classList.remove("show_menu_popup");
+               }
+          });
+          allMenuItems.forEach((menuItem, index) => {
+               menuItem.addEventListener("keyup", e => {
+                    const firstMenuItem = index === 0;
+                    const lastMenuItem = index === allMenuItems.length - 1;
+                    const nextMenuItem = allMenuItems.item(index + 1);
+                    const previousMenuItem = allMenuItems.item(index - 1);
+                    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+                         if (lastMenuItem) {
+                              allMenuItems.item(0).focus();
+                              return
+                         }
+                         nextMenuItem.focus();
+                    }
+                    if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+                         if (firstMenuItem) {
+                              allMenuItems.item(allMenuItems.length - 1).focus();
+                              return
+                         }
+                         previousMenuItem.focus();
+                    }
+               });
+          });
+     }
 });
 
-exitIcon.addEventListener("click", () => {
-     planSelection.classList.add("remove_trial");
+exitIcon.forEach((btn) => {
+     btn.addEventListener("click", () => {
+          planSelection.classList.add("remove_trial");
+     });
 });
 
 exitIconDesktop.addEventListener("click", () => {
@@ -33,8 +115,47 @@ exitIconDesktop.addEventListener("click", () => {
 });
 
 toggleBtn.addEventListener("click", () => {
-     toggleBtn.querySelector(".arrow_down").classList.toggle("arrow_up");
+     toggleBtn.classList.toggle("arrow_up");
      setupContainer.classList.toggle("show_setup_container");
+     const isExpanded = toggleBtn.attributes["aria-expanded"].value === "true";
+     const allMenuItems = setupContainer.querySelectorAll(`[role="menuitem"]`);
+
+     if (isExpanded) {
+          toggleBtn.ariaExpanded = "false";
+          toggleBtn.focus();
+     } else {
+          toggleBtn.ariaExpanded = "true";
+          allMenuItems[0].focus();
+          setupContainer.addEventListener("keyup", e => {
+               if (e.key === "Escape") {
+                    toggleBtn.ariaExpanded = "false";
+                    toggleBtn.focus();
+                    setupContainer.classList.remove("show_setup_container");
+               }
+          });
+          allMenuItems.forEach((menuItem, index) => {
+               menuItem.addEventListener("keyup", e => {
+                    const firstMenuItem = index === 0;
+                    const lastMenuItem = index === allMenuItems.length - 1;
+                    const nextMenuItem = allMenuItems.item(index + 1);
+                    const previousMenuItem = allMenuItems.item(index - 1);
+                    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+                         if (lastMenuItem) {
+                              allMenuItems.item(0).focus();
+                              return
+                         }
+                         nextMenuItem.focus();
+                    }
+                    if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+                         if (firstMenuItem) {
+                              allMenuItems.item(allMenuItems.length - 1).focus();
+                              return
+                         }
+                         previousMenuItem.focus();
+                    }
+               });
+          });
+     }
 });
 
 const setupInfos = [
@@ -77,33 +198,32 @@ const setupUI = () => {
           html += `
           <div class="info_container">
      <div class="setup_steps">
-                    <div class="setup_steps_heading">
+                    <button class="setup_steps_heading"  role="menuitem">
                          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 32 32" fill="none" class="dashed_icon">
                               <circle cx="16" cy="16" r="12" stroke="#8a8a8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                                    stroke-dasharray="4 6" />
                          </svg>
-                         <img src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg" alt="check active" class="active_checker" />
-                    </div>
+                         <img src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg" alt="check box active indicator" class="active_checker" />
+                    </button>
                     <div class="setup_info">
                          <h3 class="setup_information">${info.heading}</h3>
                          
                          <div class="setup_info_text">
                               <p>
-                                   ${info.description} <span><a href="#" class="learn_more">Learn more</a></span>
+                                   ${info.description} <span><a href="#" class="learn_more links">Learn more</a></span>
                               </p>
                               <div class="info_btn_div">
                               <button class="setup_info_btn">Customise theme</button>
-                              ${info.import ? `<a href="#" class="import_product"> Import product </a>` : ``}
+                              ${info.import ? `<a href="#" class="import_product links"> Import product </a>` : ``}
                               </div>
                          </div>
                          
                          </div>
                     </div>
                     <div>
-                         <img src=${info.img} alt=${info.heading} class="info_img" /></div>
+                         <img src=${info.img} alt="${info.heading} image" class="info_img" /></div>
                </div>`;
 });
-     
      setupContainer.innerHTML = html;
 }
 
@@ -113,10 +233,8 @@ const infoContainer = document.querySelectorAll(".info_container");
 const infos = document.querySelectorAll(".setup_info_text");
 const infoImages = document.querySelectorAll(".info_img");
 
-let isChecked = false;
-let progress = 0;
-
 infoContainer.forEach(element => {
+     infoContainer[0].querySelector(".setup_info_text").classList.toggle("show_setup_info_text");
      element.addEventListener("click", () => {
           infos.forEach(info => {
                info.classList.remove("show_setup_info_text");
@@ -131,7 +249,7 @@ infoContainer.forEach(element => {
           });
 
           if (element) {
-               element.querySelector(".setup_info_text").classList.toggle("show_setup_info_text");
+               element.querySelector(".setup_info_text").classList.add("show_setup_info_text");
                
                element.classList.add("info_container_active");
 
@@ -142,16 +260,22 @@ infoContainer.forEach(element => {
      count = 0;
      const selectBtns = element.querySelectorAll(".setup_steps_heading");
 
-     selectBtns.forEach(btn => {
-          btn.addEventListener("click", () => {
+     selectBtns.forEach((btn, index) => {
+          btn.addEventListener("click", (e) => {
+               e.stopImmediatePropagation();
                if (btn) {
-                    
                     btn.querySelector(".active_checker").classList.toggle("show_active_checker");
                }
 
                if (btn.querySelector(".active_checker").classList.contains("show_active_checker")) {
                     count++;
                     progress += 20;
+                    if (btn.parentElement.querySelector(".setup_info_text").classList.contains("show_setup_info_text")) {
+                         btn.parentElement.querySelector(".setup_info_text").classList.remove("show_setup_info_text");
+                    }
+                    infoContainer[count].querySelector(".setup_info_text").classList.add("show_setup_info_text");
+                    infoContainer[count].querySelector(".info_image").classList.add("show_info_img");
+                    
                } else {
                     count--;
                     progress -= 20;
