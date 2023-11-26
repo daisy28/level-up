@@ -1,4 +1,5 @@
 // Your javascript goes here
+// selecting elements from the dom
 const bellDiv = document.querySelector(".bell_div");
 const notification = document.querySelector(".notification_div");
 const menuPopup = document.querySelector(".menu_popup");
@@ -11,153 +12,95 @@ const toggleBtn = document.querySelector(".toggle_btn");
 const setupContainer = document.querySelector(".setup_step_container");
 const progressDiv = document.querySelector(".progress_div");
 const checkContainer = document.querySelector(".setup_steps_heading");
+const allNotificationMenuItems = notification.querySelectorAll(`[role="menuitem"]`);
+const allMenuPopupItems = menuPopup.querySelectorAll(`[role="menuitem"]`);
 let progress = 0;
 
+// Handle open menu when toggle button is clicked
+const openMenu = (toggle, listItem, toggleClass, popupClass, elementList) => {
+     toggle.ariaExpanded = "true";
+          elementList[0].focus();
+          listItem.addEventListener("keyup", e => {
+               if (e.key === "Escape") {
+                    toggleMenu(toggle, listItem,toggleClass, popupClass);
+               }
+          });
+
+     elementList.forEach((menuItem, index) => {
+          menuItem.addEventListener("keyup", (e) => {
+               handleKeyPress(e, index, elementList);
+          });
+     });
+}
+
+// Handle key press
+const handleKeyPress = (e, index, elementList) => {
+     const lastMenuItem = index === elementList.length - 1;
+     const firstMenuItem = index === 0;
+     const nextMenuItem = elementList.item(index + 1);
+     const prevMenuItem = elementList.item(index - 1);
+     if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+          if (lastMenuItem) {
+               elementList.item(0).focus();
+               return;
+          }
+          nextMenuItem.focus(); 
+     }
+
+     if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+               if (firstMenuItem) {
+               elementList.item(elementList.length - 1).focus();
+                    return;
+               }
+               prevMenuItem.focus();
+     }
+
+}
+
+// Handle close menu when toggle button is clicked
+const closeMenu = (element) => {
+     element.ariaExpanded = "false";
+     element.focus();
+}
+
+// Main toggler function
+const toggleMenu = (toggle, popup, toggleClass, popupClass,
+elementList) => {
+     toggle.classList.toggle(toggleClass);
+     popup.classList.toggle(popupClass);
+     const isExpanded = toggle.attributes["aria-expanded"].value === "true";
+
+     if (isExpanded) {
+          closeMenu(toggle);
+     } else {
+          openMenu(toggle, popup, toggleClass, popupClass, elementList);
+     }
+}
+
+// Notification button event listener
 bellDiv.addEventListener("click", () => {
-     notification.classList.toggle("show_notification");
-     bellDiv.classList.toggle("notification_active");
-     const isExpanded = bellDiv.attributes["aria-expanded"].value === "true";
-     const allMenuItems = notification.querySelectorAll(`[role="menuitem"]`);
-
-     if (isExpanded) {
-          bellDiv.ariaExpanded = "false";
-          bellDiv.focus();
-     } else {
-          bellDiv.ariaExpanded = "true";
-          allMenuItems[0].focus();
-          notification.addEventListener("keyup", e => {
-               if (e.key === "Escape") {
-                    bellDiv.ariaExpanded = "false";
-                    bellDiv.focus();
-                    notification.classList.remove("show_notification");
-               }
-          });
-          allMenuItems.forEach((menuItem, index) => {
-               menuItem.addEventListener("keyup", e => {
-                    const firstMenuItem = index === 0;
-                    const lastMenuItem = index === allMenuItems.length - 1;
-                    const nextMenuItem = allMenuItems.item(index + 1);
-                    const previousMenuItem = allMenuItems.item(index - 1);
-                    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-                         if (lastMenuItem) {
-                              allMenuItems.item(0).focus();
-                              return
-                         }
-                         nextMenuItem.focus();
-                    }
-                    if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-                         if (firstMenuItem) {
-                              allMenuItems.item(allMenuItems.length - 1).focus();
-                              return
-                         }
-                         previousMenuItem.focus();
-                    }
-               });
-          });
-     }
+     toggleMenu(bellDiv, notification, "notification_active", "show_notification", allNotificationMenuItems);
 });
 
+// User profile button event listener
 userProfile.addEventListener("click", () => {
-     menuPopup.classList.toggle("show_menu_popup");
-     userInitials.classList.toggle("show_border");
-     userProfile.classList.toggle("user_profile_active");
-       const isExpanded = userProfile.attributes["aria-expanded"].value === "true";
-     const allMenuItems = menuPopup.querySelectorAll(`[role="menuitem"]`);
-     console.log(allMenuItems)
-
-     if (isExpanded) {
-          userProfile.ariaExpanded = "false";
-          userProfile.focus();
-     } else {
-          userProfile.ariaExpanded = "true";
-          allMenuItems[0].focus();
-          menuPopup.addEventListener("keyup", e => {
-               if (e.key === "Escape") {
-                    console.log(e.key)
-                    userProfile.ariaExpanded = "false";
-                    userProfile.focus();
-                    menuPopup.classList.remove("show_menu_popup");
-               }
-          });
-          allMenuItems.forEach((menuItem, index) => {
-               menuItem.addEventListener("keyup", e => {
-                    const firstMenuItem = index === 0;
-                    const lastMenuItem = index === allMenuItems.length - 1;
-                    const nextMenuItem = allMenuItems.item(index + 1);
-                    const previousMenuItem = allMenuItems.item(index - 1);
-                    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-                         if (lastMenuItem) {
-                              allMenuItems.item(0).focus();
-                              return
-                         }
-                         nextMenuItem.focus();
-                    }
-                    if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-                         if (firstMenuItem) {
-                              allMenuItems.item(allMenuItems.length - 1).focus();
-                              return
-                         }
-                         previousMenuItem.focus();
-                    }
-               });
-          });
-     }
+     toggleMenu(userProfile, menuPopup, "user_profile_active", "show_menu_popup", allMenuPopupItems);
+     
 });
 
+// Exit button event listener
 exitIcon.forEach((btn) => {
      btn.addEventListener("click", () => {
           planSelection.classList.add("remove_trial");
      });
 });
 
+// Exit button for desktop button event listener
 exitIconDesktop.addEventListener("click", () => {
      planSelection.classList.add("remove_trial");
 });
 
-toggleBtn.addEventListener("click", () => {
-     toggleBtn.classList.toggle("arrow_up");
-     setupContainer.classList.toggle("show_setup_container");
-     const isExpanded = toggleBtn.attributes["aria-expanded"].value === "true";
-     const allMenuItems = setupContainer.querySelectorAll(`[role="menuitem"]`);
-
-     if (isExpanded) {
-          toggleBtn.ariaExpanded = "false";
-          toggleBtn.focus();
-     } else {
-          toggleBtn.ariaExpanded = "true";
-          allMenuItems[0].focus();
-          setupContainer.addEventListener("keyup", e => {
-               if (e.key === "Escape") {
-                    toggleBtn.ariaExpanded = "false";
-                    toggleBtn.focus();
-                    setupContainer.classList.remove("show_setup_container");
-               }
-          });
-          allMenuItems.forEach((menuItem, index) => {
-               menuItem.addEventListener("keyup", e => {
-                    const firstMenuItem = index === 0;
-                    const lastMenuItem = index === allMenuItems.length - 1;
-                    const nextMenuItem = allMenuItems.item(index + 1);
-                    const previousMenuItem = allMenuItems.item(index - 1);
-                    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-                         if (lastMenuItem) {
-                              allMenuItems.item(0).focus();
-                              return
-                         }
-                         nextMenuItem.focus();
-                    }
-                    if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-                         if (firstMenuItem) {
-                              allMenuItems.item(allMenuItems.length - 1).focus();
-                              return
-                         }
-                         previousMenuItem.focus();
-                    }
-               });
-          });
-     }
-});
-
+// Setup information and details
 const setupInfos = [
      {
           id: `1`,
@@ -192,6 +135,7 @@ const setupInfos = [
      },
 ];
 
+// User Interface for set up information
 const setupUI = () => {
      let html = ``;
      setupInfos.map(info => {
@@ -203,7 +147,20 @@ const setupUI = () => {
                               <circle cx="16" cy="16" r="12" stroke="#8a8a8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                                    stroke-dasharray="4 6" />
                          </svg>
-                         <img src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg" alt="check box active indicator" class="active_checker" />
+
+                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 28 28" fill="none" class="check_box_processing hidden">
+    <path
+      d="M26 14C26 16.3734 25.2962 18.6935 23.9776 20.6668C22.6591 22.6402 20.7849 24.1783 18.5922 25.0866C16.3995 25.9948 13.9867 26.2324 11.6589 25.7694C9.33114 25.3064 7.19295 24.1635 5.51472 22.4853C3.83649 20.8071 2.6936 18.6689 2.23058 16.3411C1.76755 14.0133 2.00519 11.6005 2.91345 9.4078C3.8217 7.21509 5.35977 5.34094 7.33316 4.02236C9.30655 2.70379 11.6266 2 14 2"
+      stroke="#000"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+
+                         
+
+                         <img src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg" alt="check box active indicator" class="active_checker hidden" />
                     </button>
                     <div class="setup_info">
                          <h3 class="setup_information">${info.heading}</h3>
@@ -226,13 +183,20 @@ const setupUI = () => {
 });
      setupContainer.innerHTML = html;
 }
-
 setupUI();
+const allSetUpMenuItems = setupContainer.querySelectorAll(`[role="menuitem"]`);
 
+// Handled key press for setup information
+toggleBtn.addEventListener("click", () => {
+     toggleMenu(toggleBtn, setupContainer, "arrow_up", "show_setup_container", allSetUpMenuItems);  
+});
+
+// Handled display of hidden setup guide
 const infoContainer = document.querySelectorAll(".info_container");
 const infos = document.querySelectorAll(".setup_info_text");
 const infoImages = document.querySelectorAll(".info_img");
 
+// Sgow setup guide information
 infoContainer.forEach(element => {
      infoContainer[0].querySelector(".setup_info_text").classList.toggle("show_setup_info_text");
      element.addEventListener("click", () => {
@@ -256,34 +220,69 @@ infoContainer.forEach(element => {
                element.querySelector(".info_img").classList.add("show_info_img");
           }
      });
+});
 
-     count = 0;
-     const selectBtns = element.querySelectorAll(".setup_steps_heading");
+// Move to next tab after tab button is active
+count = 0;
+const selectBtns = setupContainer.querySelectorAll(".setup_steps_heading");
+const MARK_DONE = "checkbox-active";
 
      selectBtns.forEach((btn, index) => {
           btn.addEventListener("click", (e) => {
                e.stopImmediatePropagation();
+               const markedAsDone = btn.classList.contains(MARK_DONE);
                if (btn) {
-                    btn.querySelector(".active_checker").classList.toggle("show_active_checker");
-               }
+                    uncheckedIcon = btn.querySelector(".dashed_icon");
+                    processingIcon = btn.querySelector(".check_box_processing");
+                    completedIcon = btn.querySelector(".active_checker");
 
-               if (btn.querySelector(".active_checker").classList.contains("show_active_checker")) {
-                    count++;
-                    progress += 20;
-                    if (btn.parentElement.querySelector(".setup_info_text").classList.contains("show_setup_info_text")) {
-                         btn.parentElement.querySelector(".setup_info_text").classList.remove("show_setup_info_text");
+                    const markAsDone = () => {
+                         uncheckedIcon.classList.add("hidden");
+                         processingIcon.classList.remove("hidden");
+                         setTimeout(() => {
+                         completedIcon.classList.remove("hidden");
+                         processingIcon.classList.add("hidden");
+                         }, 3000);
+                         btn.classList.add(MARK_DONE);
                     }
-                    infoContainer[count].querySelector(".setup_info_text").classList.add("show_setup_info_text");
-                    infoContainer[count].querySelector(".info_image").classList.add("show_info_img");
+
+                    const markAsNotDone = () => {
+                         completedIcon.classList.add("hidden");
+                         processingIcon.classList.remove("hidden");
+                         setTimeout(() => {
+                              processingIcon.classList.add("hidden");
+                              uncheckedIcon.classList.remove("hidden");
+                         }, 3000);
+                    }
                     
-               } else {
-                    count--;
-                    progress -= 20;
+                    if (markedAsDone) {
+                         markAsNotDone()
+                    } else {
+                         markAsDone();
+                    }
+
+                    if (!markedAsDone) {
+                         count++;
+                         progress += 20;
+                    } else {
+                         count--;
+                         progress -= 20;
+                    }
+
+                    setTimeout(() => {
+                         progressDiv.querySelector("p").innerHTML = `${count} / ${setupInfos.length} complete`;
+                    
+                         progressDiv.querySelector(".progress_fill").style.width = `${progress}%`;
+                    }, 3100);
+
+                    const firstMenuItem = index === 0;
+                    const lastMenuItem = index === selectBtns.length - 1;
+                    const nextMenuItem = selectBtns.item(index + 1);
+                    const prevMenuItem = selectBtns.item(index - 1);
+                    if (completedIcon) {
+                         console.log(completedIcon.parentElement.querySelector("setup_info_text"))
+                    }
                }
-               progressDiv.querySelector("p").innerHTML = `${count} / ${setupInfos.length} complete`;
-               
-               progressDiv.querySelector(".progress_fill").style.width = `${progress}%`;
           });
      });
-});
 
