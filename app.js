@@ -140,7 +140,7 @@ const setupUI = () => {
           html += `
           <div class="info_container">
      <div class="setup_steps">
-                    <button class="setup_steps_heading"  role="menuitem">
+                    <button class="setup_steps_heading"  role="menuitem" title="click to ${info.heading}">
                          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 32 32" fill="none" class="dashed_icon">
                               <circle cx="16" cy="16" r="12" stroke="#8a8a8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                                    stroke-dasharray="4 6" />
@@ -163,20 +163,20 @@ const setupUI = () => {
                     <div class="setup_info">
                          <h3 class="setup_information">${info.heading}</h3>
                          
-                         <div class="setup_info_text">
+                         <div class="setup_info_text" title="${info.heading} description">
                               <p>
                                    ${info.description} <span><a href="#" class="learn_more links">Learn more</a></span>
                               </p>
-                              <div class="info_btn_div">
-                              <button class="setup_info_btn" name="setup guide theme">Customise theme</button>
-                              ${info.import ? `<a href="#" class="import_product links"> Import product </a>` : ``}
+                              <div class="info_btn_div" >
+                              <button class="setup_info_btn" name="setup guide theme" title="customise your theme">Customise theme</button>
+                              ${info.import ? `<a href="#" class="import_product links" title="import your own product"> Import product </a>` : ``}
                               </div>
                          </div>
                          
                          </div>
                     </div>
                     <div>
-                         <img src=${info.img} alt="${info.heading} image" class="info_img" /></div>
+                         <img src=${info.img} alt="${info.heading} image" class="info_img" title="set up guide illustration" /></div>
                </div>`;
 });
      setupContainer.innerHTML = html;
