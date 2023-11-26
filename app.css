@@ -74,7 +74,7 @@ body {
 
 .nav_input {
   height: 40px;
-  width: 238px;
+  width: 222px;
   background-color: var(--gray200, #303030);
   padding: 8px;
   border-radius: 8px;
@@ -169,8 +169,6 @@ body {
 }
 
 .notification_active {
-  /* width: 20px;
-     height: 20px; */
   background-color: var(--gray50);
   padding: 0.5rem;
   border-radius: 8px;
@@ -275,10 +273,6 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #36fba1;
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.4);
-  text-transform: uppercase;
-  font-weight: 500;
   cursor: pointer;
 }
 
@@ -328,7 +322,14 @@ body {
   width: 28px;
   height: 28px;
   border-radius: 5.25px;
-  line-height: 140%;
+}
+
+.user_initials h1 {
+     font-size: 12px;
+     line-height: 130%;
+     font-weight: 500;
+     color: rgba(0, 0, 0, 0.4);
+     text-transform: uppercase;
 }
 
 .user_menu_name {
@@ -357,10 +358,10 @@ body {
   align-items: center;
   margin: 0 0.5rem;
   border: 0;
-  padding-bottom: 0.5rem;
+  padding: 0.5rem 0;
   border-bottom: 2px solid var(--hover);
   background-color: transparent;
-  width: 230px;
+  width: 300px;
 }
 
 .store_div_text a {
@@ -395,6 +396,10 @@ body {
 
 .menu_list_one a:first-child {
   margin-top: 0.4rem;
+}
+
+.user_email h2 {
+     padding-left: .4rem;
 }
 
 .menu_list_one a,
@@ -544,9 +549,9 @@ body {
 
 .setup_guide {
   background-color: var(--plain);
-  padding: 16px 8px;
+  padding: 16px;
   border: 1px solid var(--strokes50);
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
 }
 
 .setup_guide_div {
@@ -560,7 +565,7 @@ body {
   gap: 0.4rem;
 }
 
-.setup_guide_info h3 {
+.setup_guide_info h1 {
   color: var(--fontDark);
   font-size: 14px;
   line-height: 140%;
@@ -847,6 +852,10 @@ body {
   .notification_div {
     width: 250px;
   }
+
+  .store_div {
+  width: 230px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -889,12 +898,15 @@ body {
     border-radius: 8px;
     cursor: pointer;
     border: 2px solid var(--gray200);
-    /* background-color: #36fba1; */
   }
 
   .user_profile:focus {
     outline: 2px solid var(--focused);
     transition: all 0.3s ease-in-out;
+  }
+
+  .menu_popup {
+     margin-bottom: 5rem;
   }
 
   .user p {
@@ -909,6 +921,13 @@ body {
     position: absolute;
     right: 0px;
   }
+
+  .user_menu_initials h1 {
+     font-size: 12px;
+     line-height: 130%;
+     font-weight: 500;
+     color: rgba(0, 0, 0, 0.4);
+}
 
   .show_border {
     border: none;

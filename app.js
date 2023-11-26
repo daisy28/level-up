@@ -46,7 +46,6 @@ const handleKeyPress = (e, index, elementList) => {
           }
           nextMenuItem.focus(); 
      }
-
      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
                if (firstMenuItem) {
                elementList.item(elementList.length - 1).focus();
@@ -54,7 +53,6 @@ const handleKeyPress = (e, index, elementList) => {
                }
                prevMenuItem.focus();
      }
-
 }
 
 // Handle close menu when toggle button is clicked
@@ -170,7 +168,7 @@ const setupUI = () => {
                                    ${info.description} <span><a href="#" class="learn_more links">Learn more</a></span>
                               </p>
                               <div class="info_btn_div">
-                              <button class="setup_info_btn">Customise theme</button>
+                              <button class="setup_info_btn" name="setup guide theme">Customise theme</button>
                               ${info.import ? `<a href="#" class="import_product links"> Import product </a>` : ``}
                               </div>
                          </div>
@@ -196,7 +194,7 @@ const infoContainer = document.querySelectorAll(".info_container");
 const infos = document.querySelectorAll(".setup_info_text");
 const infoImages = document.querySelectorAll(".info_img");
 
-// Sgow setup guide information
+// Show setup guide information
 infoContainer.forEach(element => {
      infoContainer[0].querySelector(".setup_info_text").classList.toggle("show_setup_info_text");
      element.addEventListener("click", () => {
@@ -275,12 +273,19 @@ const MARK_DONE = "checkbox-active";
                          progressDiv.querySelector(".progress_fill").style.width = `${progress}%`;
                     }, 3100);
 
-                    const firstMenuItem = index === 0;
-                    const lastMenuItem = index === selectBtns.length - 1;
                     const nextMenuItem = selectBtns.item(index + 1);
-                    const prevMenuItem = selectBtns.item(index - 1);
+                    const hiddenInfo = nextMenuItem.parentElement.parentElement.querySelector(".setup_info_text");
+                    const shownInfo = completedIcon.parentElement.parentElement.querySelector(".setup_info_text");
+
                     if (completedIcon) {
-                         console.log(completedIcon.parentElement.querySelector("setup_info_text"))
+                         setTimeout(() => {
+                              infos.forEach(info => {
+                                   info.classList.remove("show_setup_info_text");
+                              });
+                              nextMenuItem.focus();
+                              hiddenInfo.classList.toggle("show_setup_info_text");
+                              shownInfo.classList.remove("show_setup_info_text");
+                         }, 3000);
                     }
                }
           });
