@@ -52,8 +52,12 @@ body {
   border-radius: 4px;
 }
 
-.logo:focus {
+.mobile_logo:focus {
   outline: 2px solid var(--focused) !important;
+}
+
+.desktop_logo {
+  display: none;
 }
 
 .logo_mobile {
@@ -540,22 +544,14 @@ body {
   cursor: pointer;
   text-align: center;
   outline: none;
-}
-
-.select_plan:focus {
-  outline: 2px solid var(--focused);
-}
-
-.plan_btn {
-  color: #323232;
   font-size: 12px;
   font-weight: 600;
   line-height: 130%;
   color: #323232;
 }
 
-.plan_btn:focus{
-  outline: none;
+.select_plan:focus {
+  outline: 2px solid var(--focused);
 }
 
 .exit_btn_mobile:hover {
@@ -615,7 +611,6 @@ body {
   border: 1px solid var(--plain);
   cursor: pointer;
   transition: all.3s ease-in-out;
-  transform: rotate(180deg);
   outline: none;
   display: flex;
   justify-content: center;
@@ -647,7 +642,7 @@ body {
 }
 
 .arrow_up {
-  transform: rotate(0deg);
+  transform: rotate(180deg);
   transition: all 0.5s ease-in-out;
 }
 
@@ -706,6 +701,11 @@ body {
   width: 24px;
   height: 24px;
   transition: all 0.3s ease-in-out;
+}
+
+.setup_steps_heading {
+  width: 24px;
+  height: 24px;
 }
 
 .setup_steps_heading:hover .dashed_icon circle {
@@ -906,15 +906,17 @@ body {
     padding: 1rem;
   }
 
-  .logo_mobile {
+  .logo_mobile,
+  .mobile_logo {
     display: none;
   }
 
-  .logo_desktop {
+  .logo_desktop,
+  .desktop_logo {
     display: block;
   }
 
-  .logo:focus {
+  .desktop_logo:focus {
     outline: 2px solid var(--focused) !important;
   }
 
