@@ -1,8 +1,12 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopify Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./app.css" />
   </head>
   <body>
@@ -191,7 +195,7 @@
                 </svg>
               </div>
             </div>
-            <button class="store_div" role="menuitem" name="list item">
+            <button class="store_div" role="menuitem" name="Admin list item" title="admin menu list item" attribute="">
               <div>
                 <img
                   src="https://crushingit.tech/hackathon-assets/icon-store.svg"
@@ -272,7 +276,7 @@
       <!-- Plan selection cta begin -->
       <div class="plan_selection" title="a plan selection frame">
         <div class="plan_selection_details">
-          <p>Extend your trial for $1/month for 3 months on select plans</p>
+          <p>Extend your trial for $1/month for 3 months on select plans.</p>
           <button class="exit_btn_mobile exit_btn" name="plan selection exit button" title="plan selection exit button">
             <svg
               width="41"
@@ -291,13 +295,15 @@
         </div>
 
         <div class="btn_group">
-          <a
-            href="https://shopify.com/pricing"
+          <button
+           title="click to see the shopify pricing"
+           name="click to see the shopify pricing"
+           class="select_plan"
+            ><a  href="https://shopify.com/pricing"
             target="_blank"
-            class="plan_btn"
-            >select a plan</a
+            class="plan_btn">select a plan</a></button
           >
-          <button class="exit_btn exit_btn_desktop" name="plan selection exit button" title="plan selection exit button">
+          <button class="exit_btn_desktop exit_btn" name="plan selection exit button" title="plan selection exit button">
             <svg
               width="41"
               height="40"
@@ -368,4 +374,4 @@
     </main>
     <script src="./app.js"></script>
   </body>
-</html>
+</Dhtml>
