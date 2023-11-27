@@ -77,8 +77,8 @@ body {
 
 .nav_input {
   height: 40px;
-  max-width: 200px;
   width: 238px;
+  max-width: 200px;
   background-color: var(--gray200, #303030);
   padding: 8px;
   border-radius: 8px;
@@ -101,17 +101,18 @@ body {
   font-size: 13px;
   line-height: 140%;
   font-weight: 500;
-  /* padding-left: 6px; */
 }
 
 .nav_search input:hover {
-  border: 1px solid var(--hover);
+  border: 1px solid #e1e1e1;
   transition: all 0.3s ease-in-out;
+  background-color: #303030;
 }
 
 .nav_search input:focus {
-  border: 2px solid var(--pressed);
+  border: 2px solid #fff;
   transition: all 0.3s ease-in-out;
+  background-color: #303030;
 }
 
 .nav_user_profile {
@@ -142,7 +143,7 @@ body {
 }
 
 .bell_div:hover {
-  background-color: #656266;
+  background-color: var(--fontMid);
   border-radius: 8px;
   transition: all 0.3s ease-in-out;
 }
@@ -201,7 +202,7 @@ body {
 
 .notification_btn {
   background-color: transparent;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -212,12 +213,10 @@ body {
   border-radius: 4px;
   outline: none;
   transition: all 0.3s ease-in-out;
-  /* background-color: var(--fontLight); */
 }
 
 .notification_btn:hover {
-  border: 1px solid var(--gray50);
-  /* background-color: var(--fontLight); */
+  background-color: e7e7e7;
   border-radius: 4px;
   outline: none;
   transition: all 0.3s ease-in-out;
@@ -257,7 +256,7 @@ body {
 }
 
 .user_profile:hover {
-  border: 2px solid var(--gray50, #656262);
+  border: 2px solid var(--fontMid);
   border-radius: 8px;
   transition: all 0.3s ease-in-out;
 }
@@ -485,7 +484,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* gap: 0.2rem; */
 }
 
 .plan_selection_details p {
@@ -502,7 +500,6 @@ body {
   outline: none;
   width: 20px;
   height: 20px;
-  /* border-radius: 10px; */
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   display: flex;
@@ -524,15 +521,14 @@ body {
 .exit_btn_desktop:focus {
   transition: all 0.3s ease-in-out;
   outline: 2px solid var(--focused);
-  background-color: var(--gray50);
   border-radius: 2px;
 }
 
 .exit_btn_mobile:hover,
 .exit_btn_desktop:hover {
   transition: all 0.3s ease-in-out;
-  background-color: var(--gray50);
-  border-radius: 2px;
+  border: 2px solid #e7e7e7;
+  border-radius: 4px;
 }
 
 .btn_group .select_plan {
@@ -552,9 +548,15 @@ body {
 
 .select_plan:focus {
   outline: 2px solid var(--focused);
+  transition: all 0.3s ease-in-out;
 }
 
-.exit_btn_mobile:hover {
+.select_plan:hover {
+  background-color: #e7e7e7;
+  transition: all 0.3s ease-in-out;
+}
+
+/* .exit_btn_mobile:hover {
   background-color: var(--hover);
   color: var(--fontDark);
   transition: all 0.3s ease-in-out;
@@ -565,7 +567,7 @@ body {
   color: var(--fontDark);
   transition: all 0.3s ease-in-out;
   outline: 2px solid var(--focused);
-}
+} */
 
 /* setup guide info */
 
