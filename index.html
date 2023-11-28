@@ -19,10 +19,11 @@
             class="mobile_logo"
             href="https://shopify.com"
             target="_blank"
+            title="Shopify Admin link, click to open in new tab"
           >
             <img
               src="https://crushingit.tech/hackathon-assets/shopify-icon.svg"
-              alt="Shopify Logo for mobile"
+              alt="Shopify Admin logo for mobile"
               class="logo_mobile"
             />
           </a>
@@ -30,14 +31,17 @@
             class="desktop_logo"
             href="https://shopify.com"
             target="_blank"
+            title="Shopify Admin link, click to open in new tab"
           >
             <img
               src="https://crushingit.tech/hackathon-assets/shopify-icon-desktop.svg"
-              alt="Shopify Logo for Desktop"
+              alt="Shopify Admin logo for desktop"
               class="logo_desktop"
             />
           </a>
         </div>
+        <!-- Brand logo both mobile and desktop end-->
+
         <!-- Search Input begin -->
         <div class="nav_search">
           <svg
@@ -47,6 +51,7 @@
             viewBox="0 0 13 14"
             fill="none"
             class="nav_search_icon"
+            title="Search icon for input element"
           >
             <path
               fill-rule="evenodd"
@@ -57,11 +62,11 @@
           </svg>
           <input
             type="text"
-            name="Shopify Admin input element"
+            name="search input element"
             id=""
             placeholder="Search"
             class="nav_input"
-            title="Shopify Admin input element"
+            title="Shopify Admin search input element"
           />
         </div>
         <!-- Search Input end -->
@@ -97,7 +102,6 @@
           <!-- Notification button and icon end -->
 
           <!-- Notification popup menu begin -->
-
           <div
             class="notification_div"
             id="notification_menu"
@@ -107,13 +111,14 @@
             <div class="notification_text">
               <h3>Alerts</h3>
               <div class="notification_icons">
-                <button class="notification_btn" role="menuitem" name="The notification filter button" title="The notification filter button">
+                <button class="notification_btn" role="menuitem" name="Notification filter button" title="Notification filter button">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="20"
                     viewBox="0 0 20 20"
                     fill="none"
+                    title="notification filter icon"
                   >
                     <path
                       d="M3 6C3 5.58579 3.33579 5.25 3.75 5.25H16.25C16.6642 5.25 17 5.58579 17 6C17 6.41421 16.6642 6.75 16.25 6.75H3.75C3.33579 6.75 3 6.41421 3 6Z"
@@ -130,13 +135,14 @@
                   </svg>
                 </button>
 
-                <button class="notification_btn" role="menuitem" name="The notification seen button" title="The notification seen button">
+                <button class="notification_btn" role="menuitem" name="Notification checked button" title="Notification checked button">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="20"
                     viewBox="0 0 20 20"
                     fill="none"
+                    title="notification checked icon"
                   >
                     <path
                       d="M13.2803 9.03033C13.5732 8.73744 13.5732 8.26256 13.2803 7.96967C12.9874 7.67678 12.5126 7.67678 12.2197 7.96967L9.25 10.9393L8.03033 9.71967C7.73744 9.42678 7.26256 9.42678 6.96967 9.71967C6.67678 10.0126 6.67678 10.4874 6.96967 10.7803L8.71967 12.5303C9.01256 12.8232 9.48744 12.8232 9.78033 12.5303L13.2803 9.03033Z"
@@ -153,7 +159,7 @@
               </div>
             </div>
             <div class="notification_message">
-               <p>Alerts about your store and account will show here
+               <p title="notification information">Alerts about your store and account will show here
                </p>
             </div>
           </div>
@@ -170,8 +176,8 @@
             title="Shopify Admin profile with a popup menu"
           >
             <div class="user">
-              <p class="user_name" title="Admin store name">davii collections</p>
-              <div class="user_initials"><h1 title="Admin store name initials">dc</h1></div>
+              <p class="user_name" title="Shopify Admin store name">davii collections</p>
+              <div class="user_initials"><h1 title="Shopify Admin store name initials">dc</h1></div>
             </div>
           </button>
 
@@ -183,15 +189,16 @@
             role="menu"
           >
             <div class="user_details">
-              <div class="user_menu_initials"><h1>dc</h1></div>
+              <div class="user_menu_initials"><h1 title="Shopify Admin store name initials">dc</h1></div>
               <div class="user_menu_name">
-                <p title="Admin  store name">davii collections</p>
+                <p title="Shopify Admin store name">davii collections</p>
                 <svg
                   width="40"
                   height="40"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  title="Check icon"
                 >
                   <circle cx="12" cy="12" r="10" fill="#f7f7f7"></circle>
                   <path
@@ -201,11 +208,11 @@
                 </svg>
               </div>
             </div>
-            <button class="store_div" role="menuitem" name="Admin list item" title="admin menu list item" attribute="">
+            <button class="store_div" role="menuitem" name="Shopify admin profile list item" title="Shopify admin profile list item" attribute="">
               <div>
                 <img
                   src="https://crushingit.tech/hackathon-assets/icon-store.svg"
-                  alt="menu list store icon"
+                  alt="Shopify admin profile store icon"
                 />
               </div>
               <div class="store_div_text">
@@ -219,40 +226,46 @@
                 href="https://admin.shopify.com"
                 target="_blank"
                 role="menuitem"
+                title="Shopify admin profile list item"
                 >Help Center</a
               >
               <a
                 href="https://admin.shopify.com"
                 target="_blank"
                 role="menuitem"
+                title="Shopify admin profile list item"
                 >Changelog</a
               >
               <a
                 href="https://admin.shopify.com"
                 target="_blank"
                 role="menuitem"
+                title="Shopify admin profile list item"
                 >Community forums</a
               >
               <a
                 href="https://admin.shopify.com"
                 target="_blank"
                 role="menuitem"
+                title="Shopify admin profile list item"
                 >Hire a Shopify Partner</a
               >
               <a
                 href="https://admin.shopify.com"
                 target="_blank"
                 role="menuitem"
+                title="Shopify admin profile list item"
                 >Keyboard shortcuts</a
               >
             </div>
             <div class="menu_list_two">
               <div class="user_email">
-                <h2  title="Admin name">david michael</h2>
+                <h2 title="Admin name">david michael</h2>
                 <a
                   href="https://admin.shopify.com"
                   target="_blank"
                   role="menuitem"
+                  title="Shopify admin profile list item email address"
                   >davidmicheal@gmail.com</a
                 >
               </div>
@@ -260,12 +273,14 @@
                 href="https://admin.shopify.com"
                 target="_blank"
                 role="menuitem"
+                title="Shopify admin profile list item"
                 >Manage account</a
               >
               <a
                 href="https://admin.shopify.com"
                 target="_blank"
                 role="menuitem"
+                title="Shopify admin profile list item"
                 >Log out</a
               >
             </div>
@@ -280,10 +295,10 @@
     <!-- Main section begins -->
     <main>
       <!-- Plan selection cta begin -->
-      <div class="plan_selection" title="a plan selection frame">
+      <div class="plan_selection" title="Plan selection frame">
         <div class="plan_selection_details">
-          <p>Extend your trial for $1/month for 3 months on select plans.</p>
-          <button class="exit_btn_mobile exit_btn" name="plan selection exit button" title="plan selection exit button">
+          <p title="Plan selection information">Extend your trial for $1/month for 3 months on select plans.</p>
+          <button class="exit_btn_mobile exit_btn" name="plan selection exit button mobile" title="plan selection exit button mobile">
             <svg
               width="41"
               height="40"
@@ -291,6 +306,7 @@
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               class="exit_icon_mobile exit_icon"
+              title="plan selection exit icon"
             >
               <path
                 d="M14.4697 15.0303C14.7626 15.3232 15.2374 15.3232 15.5303 15.0303C15.8232 14.7374 15.8232 14.2626 15.5303 13.9697L11.5607 10L15.5303 6.03033C15.8232 5.73744 15.8232 5.26256 15.5303 4.96967C15.2374 4.67678 14.7626 4.67678 14.4697 4.96967L10.5 8.93934L6.53033 4.96967C6.23744 4.67678 5.76256 4.67678 5.46967 4.96967C5.17678 5.26256 5.17678 5.73744 5.46967 6.03033L9.43934 10L5.46967 13.9697C5.17678 14.2626 5.17678 14.7374 5.46967 15.0303C5.76256 15.3232 6.23744 15.3232 6.53033 15.0303L10.5 11.0607L14.4697 15.0303Z"
@@ -302,15 +318,12 @@
 
         <div class="btn_group">
           <button
-           title="click to see the shopify pricing"
-           name="click to see the shopify pricing"
+           title="select plan button"
+           name="select plan button"
            class="select_plan"
             >select a plan</button
           >
-          <!-- <a  href="https://shopify.com/pricing"
-            target="_blank"
-            class="plan_btn">select a plan</a> -->
-          <button class="exit_btn_desktop exit_btn" name="plan selection exit button" title="plan selection exit button">
+          <button class="exit_btn_desktop exit_btn" name="plan selection exit button desktop" title="plan selection exit button desktop">
             <svg
               width="41"
               height="40"
@@ -318,6 +331,7 @@
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               class="exit_icon_desktop exit_icon"
+              title="plan selection exit icon"
             >
               <path
                 d="M14.4697 15.0303C14.7626 15.3232 15.2374 15.3232 15.5303 15.0303C15.8232 14.7374 15.8232 14.2626 15.5303 13.9697L11.5607 10L15.5303 6.03033C15.8232 5.73744 15.8232 5.26256 15.5303 4.96967C15.2374 4.67678 14.7626 4.67678 14.4697 4.96967L10.5 8.93934L6.53033 4.96967C6.23744 4.67678 5.76256 4.67678 5.46967 4.96967C5.17678 5.26256 5.17678 5.73744 5.46967 6.03033L9.43934 10L5.46967 13.9697C5.17678 14.2626 5.17678 14.7374 5.46967 15.0303C5.76256 15.3232 6.23744 15.3232 6.53033 15.0303L10.5 11.0607L14.4697 15.0303Z"
@@ -334,8 +348,8 @@
         <div class="setup_guide_div">
           <div class="setup_guide_info">
             <div>
-              <h1>Setup guide</h1>
-              <p>
+              <h1 title="Setup guide heading">Setup guide</h1>
+              <p title="Setup guide description">
                 Use this personalized guide to get your store up and running.
               </p>
             </div>
@@ -348,8 +362,8 @@
               aria-expanded="false"
               aria-controls="setup_popup"
               id="setup_menu_toggle"
-              name="Setup guide button with a menu popup"
-              title="Setup guide button with a menu popup. open to customise store"
+              name="Setup guide button with tab list"
+              title="Setup guide button with tab list. expand to setup store"
             >
               <img
                 src="https://crushingit.tech/hackathon-assets/icon-arrow-down.svg"
@@ -362,8 +376,8 @@
 
           <!-- Setup Progress bar begin -->
           <div class="progress_div">
-            <p title="progress indicator">0 / 5 completed</p>
-            <div class="progress" role="progressbar" title="setup guide progress bar">
+            <p title="progress bar text indicator">0 / 5 completed</p>
+            <div class="progress" role="progressbar" title="setup guide progress bar indicator">
               <div class="progress_fill"></div>
             </div>
           </div>
@@ -377,8 +391,8 @@
           role="menu"
         ></div>
       </section>
-      <!-- Setup guide begin -->
+      <!-- Setup guide end -->
     </main>
     <script src="./app.js"></script>
   </body>
-</Dhtml>
+</html>

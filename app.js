@@ -113,11 +113,11 @@ exitIconDesktop.addEventListener("click", () => {
 
 // select plan button
 selectPlanBtn.addEventListener("click", () => {
-     window.open("https://shopify.com/pricing", "_blank");
+  window.open("https://shopify.com/pricing", "_blank");
 });
 
 storeBtn.addEventListener("click", () => {
-     window.open("https://admin.shopify.com", "_blank");
+  window.open("https://admin.shopify.com", "_blank");
 });
 
 // Setup information and details
@@ -167,15 +167,15 @@ const setupUI = () => {
     html += `
           <div class="info_container">
      <div class="setup_steps">
-                    <button class="setup_steps_heading"  role="menuitem" title="click to ${
+                    <button class="setup_steps_heading"  role="menuitem" title="setup checkbox, click to ${
                       info.heading
                     }">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 32 32" fill="none" class="dashed_icon"  title="unchecked">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 32 32" fill="none" class="dashed_icon"  title="setup checkbox unchecked icon">
                               <circle cx="16" cy="16" r="12" stroke="#8a8a8a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
                                    stroke-dasharray="4 6" />
                          </svg>
 
-                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 28 28" fill="none" class="check_box_processing hidden" title="processing">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 28 28" fill="none" class="check_box_processing hidden" title="setup checkbox processing icon">
     <path
       d="M26 14C26 16.3734 25.2962 18.6935 23.9776 20.6668C22.6591 22.6402 20.7849 24.1783 18.5922 25.0866C16.3995 25.9948 13.9867 26.2324 11.6589 25.7694C9.33114 25.3064 7.19295 24.1635 5.51472 22.4853C3.83649 20.8071 2.6936 18.6689 2.23058 16.3411C1.76755 14.0133 2.00519 11.6005 2.91345 9.4078C3.8217 7.21509 5.35977 5.34094 7.33316 4.02236C9.30655 2.70379 11.6266 2 14 2"
       stroke="#000"
@@ -187,21 +187,21 @@ const setupUI = () => {
 
                          
 
-                         <img src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg" alt="check box active indicator" class="active_checker hidden"  title="plan selected successfully" />
+                         <img src="https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg" alt="check box active indicator" class="active_checker hidden"  title="setup checkbox checked icon" />
                     </button>
                     <div class="setup_info">
                          <h3 class="setup_information">${info.heading}</h3>
                          
-                         <div class="setup_info_text" title="${
+                         <div class="setup_info_text" >
+                              <p title="${
                            info.heading
                          } description">
-                              <p>
                                    ${
                                      info.description
-                                   } <span><a href="#" class="learn_more links">Learn more</a></span>
+                                   } <span><a href="#" class="learn_more links" title="learn more on how to ${info.heading}">Learn more</a></span>
                               </p>
                               <div class="info_btn_div" >
-                              <button class="setup_info_btn" name="call to action to set up account" title="call to action to set up account">${
+                              <button class="setup_info_btn" name="click to ${info.cta}" title="click to ${info.cta}">${
                                 info.cta
                               }</button>
                               ${
@@ -217,7 +217,9 @@ const setupUI = () => {
                     <div>
                          <img src=${info.img} alt="${
       info.heading
-    } image" class="info_img" title="set up guide illustration" /></div>
+    } image" class="info_img" title="${
+      info.heading
+    } illustration" /></div>
                </div>`;
   });
   setupContainer.innerHTML = html;
@@ -243,10 +245,10 @@ const infoImages = document.querySelectorAll(".info_img");
 
 // Show setup guide information
 infoContainer.forEach((element) => {
+  // Add the active class to first list item
   const firstListItem = infoContainer[0].querySelector(".setup_info_text");
   const firstLitItemImg = infoContainer[0].querySelector(".info_img");
   infoContainer[0].classList.add("info_container_active");
-
   firstListItem.classList.toggle("show_setup_info_text");
   firstLitItemImg.classList.toggle("show_info_img");
 
@@ -275,7 +277,7 @@ infoContainer.forEach((element) => {
   });
 });
 
-// Move to next tab after tab button is active
+// Move to next tab after previous tab button is checked
 count = 0;
 const selectBtns = setupContainer.querySelectorAll(".setup_steps_heading");
 const MARK_DONE = "checkbox-active";
@@ -310,16 +312,12 @@ selectBtns.forEach((btn, index) => {
 
       if (markedAsDone) {
         markAsNotDone();
-      } else {
-        markAsDone();
-      }
-
-      if (!markedAsDone) {
-        count++;
-        progress += 20;
-      } else {
         count--;
         progress -= 20;
+      } else {
+        markAsDone();
+        count++;
+        progress += 20;
       }
 
       setTimeout(() => {
@@ -332,7 +330,7 @@ selectBtns.forEach((btn, index) => {
         ).style.width = `${progress}%`;
       }, 3100);
 
-      const nextMenuItem = selectBtns.item(index + 1);
+      let nextMenuItem = selectBtns.item(index + 1);
       const hiddenInfo =
         nextMenuItem.parentElement.parentElement.querySelector(
           ".setup_info_text"
@@ -345,6 +343,7 @@ selectBtns.forEach((btn, index) => {
         completedIcon.parentElement.parentElement.querySelector(
           ".setup_info_text"
         );
+        console.log(completedIcon)
 
       if (completedIcon) {
         setTimeout(() => {
@@ -364,6 +363,10 @@ selectBtns.forEach((btn, index) => {
           active.classList.add("info_container_active");
           shownInfo.classList.remove("show_setup_info_text");
         }, 3000);
+      } else {
+        markAsDone();
+        count++;
+        progress += 20;
       }
     }
   });

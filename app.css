@@ -1,3 +1,4 @@
+/* Import fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700&display=swap");
 
 * {
@@ -77,8 +78,8 @@ body {
 
 .nav_input {
   height: 40px;
-  width: 238px;
   max-width: 200px;
+  width: 238px;
   background-color: var(--gray200, #303030);
   padding: 8px;
   border-radius: 8px;
@@ -468,8 +469,7 @@ body {
 }
 /* Navigation and popups end */
 
-/* main content section begin */
-
+/* main content section begin (plan selection) */
 .plan_selection {
   padding: 16px;
   background-color: var(--gray300);
@@ -555,22 +555,11 @@ body {
   background-color: #e7e7e7;
   transition: all 0.3s ease-in-out;
 }
+/* Select plan end
+ */
 
-/* .exit_btn_mobile:hover {
-  background-color: var(--hover);
-  color: var(--fontDark);
-  transition: all 0.3s ease-in-out;
-}
-
-.exit_btn_mobile:focus {
-  background-color: var(--plain);
-  color: var(--fontDark);
-  transition: all 0.3s ease-in-out;
-  outline: 2px solid var(--focused);
-} */
 
 /* setup guide info */
-
 .setup_guide {
   background-color: var(--plain);
   padding: 8px;
@@ -901,8 +890,7 @@ body {
   }
 }
 
-
-
+/* Media queries and responsiveness (Desktop) */
 @media screen and (min-width: 1024px) {
   .nav {
     padding: 1rem;
@@ -1039,7 +1027,6 @@ body {
   outline: none;
   width: 20px;
   height: 20px;
-  /* border-radius: 10px; */
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   display: flex;
@@ -1062,3 +1049,4 @@ body {
     display: block;
   }
 }
+/* Media queries and responsiveness (Desktop) end */
