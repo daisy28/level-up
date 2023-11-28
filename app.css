@@ -169,12 +169,12 @@ body {
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
   padding: 1rem;
   display: none;
-  transition: all 1s ease-in-out;
+  transition: all 3s ease-in-out;
 }
 
 .show_notification {
   display: block;
-  transition: all 1s ease-in-out;
+  transition: all 3s ease-in-out;
 }
 
 .notification_active {
@@ -314,14 +314,17 @@ body {
 }
 
 .user_details {
+  width: 97%;
   background-color: var(--hover);
   border-radius: 8px;
   padding: 4px 8px;
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  margin: 0.3rem;
+  margin: auto;
+  margin-top: .3rem;
   margin-bottom: 1rem;
+  border: none;
 }
 
 .user_menu_initials {
@@ -428,14 +431,16 @@ body {
 }
 
 .menu_list_one a:hover,
-.menu_list_two a:hover {
+.menu_list_two a:hover,
+.user_details:hover {
   background-color: var(--hover);
   border-radius: 8px;
   transition: all 0.3s ease-in-out;
 }
 
 .menu_list_one a:focus,
-.menu_list_two a:focus {
+.menu_list_two a:focus,
+.user_details:focus {
   outline: 2px solid var(--focused);
   border-radius: 8px;
   transition: all 0.3s ease-in-out;
@@ -777,6 +782,7 @@ body {
   line-height: 140%;
   color: var(--fontDark, #303030);
   font-weight: 600;
+  margin-top: .2rem;
 }
 
 .setup_info p {

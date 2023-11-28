@@ -7,6 +7,7 @@ const userProfile = document.querySelector(".user_profile");
 const userInitials = document.querySelector(".user_initials");
 const planSelection = document.querySelector(".plan_selection");
 const selectPlanBtn = document.querySelector(".select_plan");
+const adminStoreName = document.querySelector(".user_details");
 const storeBtn = document.querySelector(".store_div");
 const exitIcon = document.querySelectorAll(".exit_btn");
 const exitIconDesktop = document.querySelector(".exit_icon_desktop");
@@ -120,6 +121,10 @@ storeBtn.addEventListener("click", () => {
   window.open("https://admin.shopify.com", "_blank");
 });
 
+adminStoreName.addEventListener("click", () => {
+  window.open("https://admin.shopify.com", "_blank");
+});
+
 // Setup information and details
 const setupInfos = [
   {
@@ -140,7 +145,7 @@ const setupInfos = [
   {
     id: `3`,
     heading: `Add a custom domain`,
-    description: `Your current domain is 222219.myshopify.com but you can add a cutom domain to help customers find your online store. `,
+    description: `Your current domain is 222219.myshopify.com but you can add a custom domain to help customers find your online store. `,
     img: `https://crushingit.tech/hackathon-assets/website.png`,
     cta: `Add domain`,
   },
